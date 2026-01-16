@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getComputerChoice() {
+            let computer = Math.floor(Math.random() * 3)
+            return computer == 0 ? "rock" : computer == 1 ? "paper" : "scissors";
+        };
+
+        function getHumanChoice() {
+            let human = window.prompt('Rock, paper, or scissors?');
+            return human.toLowerCase();
+        }
+        
+        let humanScore = 0;
+        let computerScore = 0;
+
+        function playGame(times) {
+            for (let i = 0; i <= times; i++) {
+                function playRound(humanChoice, computerChoice) {
+                    if (humanChoice == computerChoice) {
+                        return "Fair!"
+                    } else if (humanChoice == "rock" && computerChoice == "paper") {
+                        computerScore += 1;
+                        return "You lose! Paper beats Rock";
+                    } else if (humanChoice == "rock" && computerChoice == "scissors") {
+                        humanScore += 1
+                        return "You win! Rock beats Scissors"
+                    } else if (humanChoice == "paper" && computerChoice == "rock") {
+                        humanScore += 1
+                        return "You win! Paper beats Rock"
+                    } else if (humanChoice == "paper" && computerChoice == "scissors") {
+                        computerScore += 1
+                        return "You lose! Scissors beats paper"
+                    } else if (humanChoice == "scissors" && computerChoice == "paper") {
+                        humanScore += 1
+                        return "You win! Scissors beats paper"
+                    } else {
+                        computerScore += 1
+                        return "You lose! Rock beats scissors"
+                    }
+                };
+                const humanSelection = getHumanChoice();
+                const computerSelection = getComputerChoice();
+
+                console.log(playRound(humanSelection, computerSelection));
+                }
+        };
+        playGame(5);
+
+
+    </script>
+</body>
+</html>
